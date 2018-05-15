@@ -1,0 +1,14 @@
+<h1>Make new Comment</h1>
+
+<% if @comment.comment_id %>
+<% action_url = sub_post_comment_comments_url(@comment.sub, @comment.post_id, @comment.comment_id) %>
+<% else %>
+<% action_url = comments_url %>
+<% end %>
+<form action="<%=action_url%>" method="post">
+  <%= auth_token%>
+  <input type="hidden" name="comment[post_id]" value="<%=@comment.post_id%>">
+  <input type="hidden" name="comment[comment_id]" value="<%=@comment.comment_id%>">
+  <input type="text" name="comment[content]" value="<%=@comment.content%>">
+  <input type="submit" value="Comment">
+</form>

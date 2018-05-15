@@ -1,0 +1,9 @@
+<ul>
+  <% comment.comments.each do |sub_comment| %>
+    <li><%=sub_comment.content %></li>
+    <%= link_to "Reply", new_sub_post_comment_comment_url(sub_comment.sub, sub_comment.post, sub_comment.id) %>
+    <% unless sub_comment.comments.empty? %>
+      <%= render 'comment', comment: sub_comment %>
+    <% end %>
+  <% end %>
+</ul>

@@ -1,0 +1,20 @@
+<h1><%=@post.title%></h1>
+
+<%= link_to "Back", sub_url(@post.sub_id)%>
+
+<% if current_user.id == @post.user_id %>
+  <%= link_to "Edit", edit_sub_post_url(@post.sub_id, @post)%>
+<% end %>
+<br>
+<% @comments.each do |comment| %>
+  <% unless comment.comment_id %>
+    <%= comment.author.username %>
+    <div style = 'padding-left: 10px;'>
+        <%= link_to "#{comment.content}", comment_url(comment) %>
+    </div>
+    <br>
+  <% end %>
+<% end %>
+
+<br>
+<%= link_to "comment", new_sub_post_comment_url(@post.sub_id, @post.id) %>

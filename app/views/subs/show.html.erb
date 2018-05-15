@@ -1,0 +1,23 @@
+<h2><%=@sub.title%></h2>
+<%= @sub.description %>
+<br>
+<%= link_to "Edit", edit_sub_url%>
+<br>
+<%= link_to "Index", subs_url %>
+<br>
+
+<% @posts.each do |post|  %>
+  <%= link_to "#{post.title}", sub_post_url(@sub,post) %>
+  <% if current_user.id == post.user_id %>
+  <form action="<%=sub_post_url(@sub,post)%>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+  <% end %>
+<% end %>
+
+
+
+<br>
+<%= link_to "New Post", new_sub_post_url(@sub) %>
