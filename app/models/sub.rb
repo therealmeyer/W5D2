@@ -6,7 +6,8 @@ class Sub < ApplicationRecord
   foreign_key: :user_id,
   class_name: :User
 
-  has_many :posts
+  has_many :posts,
+  dependent: :destroy
 
   has_many :references,
   foreign_key: :sub_id,

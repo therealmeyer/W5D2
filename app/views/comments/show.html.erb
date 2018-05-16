@@ -1,3 +1,4 @@
-<%= @comment.content %>
+<h3><%= @comment.content %></h3>
+<%= link_to "Back to Post", sub_post_url(@comment.sub, @comment.post) %>
 <%= link_to "Reply", new_sub_post_comment_comment_url(@comment.sub, @comment.post, @comment.id) %>
 <%= render 'comment', comment: @comment %>
